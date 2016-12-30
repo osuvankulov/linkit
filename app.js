@@ -1,17 +1,25 @@
 #!/usr/bin/node
 
 var m = require('mraa');
-var ledState = true;                                                     
+var express = require('express');
+var app = express();
 var myLed = new m.Gpio(44);
+var port = process.env.PORT || 5000;
 
-console.log('MRAA Version: ' + m.getVersion());                          
 myLed.dir(m.DIR_OUT);
 
-function periodicActivity()                                              
-{                                                                        
-        myLed.write(ledState ? 1 : 0);                                   
-        ledState = !ledState;                                            
-        setTimeout(periodicActivity, 1000);                              
-}                                                                        
-                                                                         
-periodicActivity();
+app.get('/', function(req, res) {
+    res.send('Led is ' + (myLed.read()?'off.':'on.'));
+});
+
+app.get('/on', function(req, res) {
+    myLed.write(0);                                   
+    res.send('Led is ' + (myLed.read()?'off.':'on.'));
+});
+
+app.get('/off', function(req, res) {
+    myLed.write(1);                                   
+    res.send('Led is ' + (myLed.read()?'off.':'on.'));
+});
+
+app.listen(port);
