@@ -1,0 +1,23 @@
+{
+  "name": "linkit",
+  "version": "1.0.0",
+  "description": "NodeJs project",
+  "main": "app.js",
+  "dependencies": {
+    "daemon": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osuvankulov/linkit.git"
+  },
+  "author": "Otabek Suvankulov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osuvankulov/linkit/issues"
+  },
+  "homepage": "https://github.com/osuvankulov/linkit#readme"
+}
