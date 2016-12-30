@@ -1,5 +1,6 @@
 #!/usr/bin/node
 
+require('daemon')();
 var m = require('mraa');
 var express = require('express');
 var app = express();
