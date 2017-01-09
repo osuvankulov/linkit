@@ -15,7 +15,7 @@ app.get('/', function(req, res) { console.dir(req)
     res.send('Led is ' + (myLed.read()?'off.':'on.'));
 
     logText = new Date().toJSON() + ": Info request.\n"
-    fs.appendFile('myLinkIt.log', logText, (err) => { if (err) throw err; });
+    fs.appendFile('myLinkIt.log', logText, function(err) { if (err) throw err; });
 
 });
 
@@ -29,7 +29,7 @@ app.get('/on', function(req, res) {
     res.send('Led is ' + (myLed.read()?'off.':'on.'));
 
     logText = new Date().toJSON() + ": ON request.\n"
-    fs.appendFile('myLinkIt.log', logText, (err) => { if (err) throw err; });
+    fs.appendFile('myLinkIt.log', logText, function(err) { if (err) throw err; });
 
 });
 
@@ -43,7 +43,7 @@ app.get('/off', function(req, res) {
     res.send('Led is ' + (myLed.read()?'off.':'on.'));
 
     logText = new Date().toJSON() + ": OFF request.\n"
-    fs.appendFile('myLinkIt.log', logText, (err) => { if (err) throw err; });
+    fs.appendFile('myLinkIt.log', logText, function(err) { if (err) throw err; });
 
 });
 
