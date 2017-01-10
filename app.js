@@ -20,9 +20,6 @@ app.get('/', function(req, res) {
 });
 
 
-
-
-
 app.get('/on', function(req, res) {
 
     myLed.write(0);
@@ -32,9 +29,6 @@ app.get('/on', function(req, res) {
     fs.appendFile('myLinkIt.log', logText, function(err) { if (err) throw err; });
 
 });
-
-
-
 
 
 app.get('/off', function(req, res) {
@@ -50,7 +44,7 @@ app.get('/off', function(req, res) {
 
 app.get('/showlog', function(req, res) {
 
-	fs.readFile('/etc/passwd', function (err, data) {
+	fs.readFile('myLinkIt.log', function (err, data) {
 		if (err) throw err;
 	    res.send(data);
 	});
