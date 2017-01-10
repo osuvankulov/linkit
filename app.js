@@ -3,6 +3,7 @@
 require('daemon')();
 var m = require('mraa');
 var fs = require('fs');
+var lineReader = require('line-reader');
 var express = require('express');
 var app = express();
 var myLed = new m.Gpio(0);
@@ -44,10 +45,11 @@ app.get('/off', function(req, res) {
 
 app.get('/showlog', function(req, res) {
 
-	fs.readFile('myLinkIt.log', function (err, data) {
-		if (err) throw err;
-	    res.send(data);
-	});
+    var text = '';
+    lineReader.eachLine('file.txt', function(line, last) {
+        text += line + '<br>';
+    });
+    res.send(text);
 
 });
 
