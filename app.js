@@ -10,7 +10,7 @@ var port = process.env.PORT || 5000;
 
 myLed.dir(m.DIR_OUT);
 
-app.get('/', function(req, res) { console.dir(req)
+app.get('/', function(req, res) {
 
     res.send('<h1>Light is ' + (myLed.read()?'off.':'on.') + '</h1>');
 
@@ -25,7 +25,7 @@ app.get('/', function(req, res) { console.dir(req)
 
 app.get('/on', function(req, res) {
 
-    myLed.write(0);                                   
+    myLed.write(0);
     res.send('<h1>Light is ' + (myLed.read()?'off.':'on.') + '</h1>');
 
     logText = new Date().toJSON() + ": ON request.\n"
@@ -39,7 +39,7 @@ app.get('/on', function(req, res) {
 
 app.get('/off', function(req, res) {
 
-    myLed.write(1);                                   
+    myLed.write(1);
     res.send('<h1>Light is ' + (myLed.read()?'off.':'on.') + '</h1>');
 
     logText = new Date().toJSON() + ": OFF request.\n"
@@ -48,6 +48,14 @@ app.get('/off', function(req, res) {
 });
 
 
+app.get('/showlog', function(req, res) {
+
+	fs.readFile('/etc/passwd', function (err, data) {
+		if (err) throw err;
+	    res.send(data);
+	});
+
+});
 
 
 app.listen(port);
